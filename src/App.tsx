@@ -1,38 +1,25 @@
-import FirstComponent from "./components/FirstComponent"
-
-const personas = [
-  {
-    id: 1,
-    name: "Alinder",
-    rol: "Programador"
-  }, {
-    id: 2,
-    name: "liz",
-    rol: "Programador"
-  }
-  , {
-    id: 3,
-    name: "otra persona",
-    rol: "otro rol"
-  }
-]
+import { Route, Routes } from "react-router"
+import HomePage from "./pages/HomePage"
+import BlogPage from "./pages/BlogPage"
+import PortfolioPage from "./pages/PortfolioPage"
+import StudioPage from "./pages/StudioPage"
+import NavBarComponent from "./components/NavBarComponent"
 
 
 function App() {
-  const tipoRol = personas.filter(persona => persona.rol == "Administrador")
-  console.log(tipoRol.length)
+
 
 
   return (
     <div>
-      {tipoRol && tipoRol.length > 0 ? (<ul>
-        {tipoRol.map(persona => (
-          <li key={persona.id}>
-            <FirstComponent name={persona.name} rol={persona.rol} />
-          </li>
-        ))}
-      </ul>) : (<p>No hay personas con ese rol</p>)}
-
+      <h1 className="font-bold text-3xl text-regal-blue underline">yo</h1>
+      <NavBarComponent />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/studio" element={<StudioPage />} />
+      </Routes>
     </div>
   )
 }
